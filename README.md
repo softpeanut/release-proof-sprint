@@ -18,17 +18,17 @@ Open <http://127.0.0.1:4174/>.
 Opening `index.html` directly also works. There is no JavaScript, server-side
 application, form submission, cookie, external font, or analytics request.
 
-## Publication prerequisites
+## Publication status and remaining gates
 
-The page is prepared but not published. Before publishing:
+The page is published at <https://softpeanut.github.io/release-proof-sprint/>. The public
+repository has Issues enabled, and both CTAs target that exact repository. The page itself
+warns that issues are public and must not contain credentials, private code, customer data,
+or access links.
 
-1. Obtain the user's approval for the GitHub authenticated actions.
-2. Create the planned public `softpeanut/release-proof-sprint` repository.
-3. Enable Issues and verify both CTA links open a new issue in that exact repository.
-4. Add a short issue policy stating that issues are public and must not contain
-   credentials, private code, customer data, or access links.
-5. Human-review the offer, turnaround condition, cancellation terms, and public identity.
-6. Keep the “No payment is being collected” language until an approved, verified
+Before accepting work or collecting payment:
+
+1. Human-review the offer, turnaround condition, cancellation terms, and public identity.
+2. Keep the “No payment is being collected” language until an approved, verified
    Korean payout rail and an actual checkout are ready.
 
 The issue is only an expression of scope interest. It does not reserve the one slot,
@@ -58,4 +58,3 @@ Run:
 The script uses only shell tools and Python's standard-library HTML parser. It checks
 local asset references, the required offer language, absence of scripts/forms/analytics,
 both planned GitHub issue CTAs, and the free ShipProof links.
-
