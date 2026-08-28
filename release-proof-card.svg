@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Release Proof Sprint</title>
+  <desc id="desc">One public repository, one critical path, observable release evidence.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101727"/>
+      <stop offset="1" stop-color="#253657"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" rx="32" fill="url(#bg)"/>
+  <rect x="72" y="68" width="1056" height="494" rx="28" fill="#f6f7fb"/>
+  <rect x="112" y="108" width="96" height="96" rx="24" fill="#3658d4"/>
+  <text x="160" y="170" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="38" font-weight="800" fill="#fff">RP</text>
+  <text x="244" y="148" font-family="ui-sans-serif,system-ui,sans-serif" font-size="26" font-weight="700" fill="#3658d4">FIXED-SCOPE SERVICE</text>
+  <text x="112" y="290" font-family="ui-sans-serif,system-ui,sans-serif" font-size="64" font-weight="800" fill="#101727">Release Proof Sprint</text>
+  <text x="112" y="352" font-family="ui-sans-serif,system-ui,sans-serif" font-size="32" fill="#42506a">One public repository · one critical path</text>
+  <g transform="translate(112 418)" font-family="ui-sans-serif,system-ui,sans-serif" font-size="25" font-weight="650">
+    <rect width="270" height="70" rx="18" fill="#e2e8ff"/>
+    <text x="135" y="45" text-anchor="middle" fill="#253657">3–7 observable checks</text>
+    <rect x="294" width="260" height="70" rx="18" fill="#e2e8ff"/>
+    <text x="424" y="45" text-anchor="middle" fill="#253657">Pass + fail evidence</text>
+    <rect x="578" width="310" height="70" rx="18" fill="#e2e8ff"/>
+    <text x="733" y="45" text-anchor="middle" fill="#253657">Reviewer-ready handoff</text>
+  </g>
+</svg>

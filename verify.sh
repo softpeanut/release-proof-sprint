@@ -6,6 +6,8 @@ cd "$(dirname "$0")"
 test -s index.html
 test -s styles.css
 test -s README.md
+test -s shopstr-terms.md
+test -s release-proof-card.svg
 
 python3 - <<'PY'
 from html.parser import HTMLParser
@@ -72,6 +74,36 @@ for forbidden in ("google-analytics", "googletagmanager", "plausible.io", "segme
     assert forbidden not in html.lower(), forbidden
 
 print(f"ok: {len(parser.links)} links, {len(issue_links)} scope-interest CTAs, no script/form")
+PY
+
+python3 - <<'PY'
+from pathlib import Path
+import xml.etree.ElementTree as ET
+
+terms = Path("shopstr-terms.md").read_text(encoding="utf-8")
+required = (
+    "100,000 sats",
+    "one public GitHub repository",
+    "3–7 observable checks",
+    "three business days",
+    "one revision",
+    "compatible Lightning invoice",
+    "Do not provide",
+    "real name",
+    "private repository",
+    "production access",
+    "customer data",
+)
+for phrase in required:
+    assert phrase in terms, phrase
+
+for forbidden in ("@", "file://", "C:\\"):
+    assert forbidden not in terms, forbidden
+
+root = ET.parse("release-proof-card.svg").getroot()
+assert root.tag.endswith("svg")
+assert root.attrib.get("viewBox") == "0 0 1200 630"
+print("ok: public service terms and product card verified")
 PY
 
 printf '%s\n' "ok: static landing verification passed"
