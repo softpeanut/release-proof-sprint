@@ -8,6 +8,8 @@ test -s styles.css
 test -s README.md
 test -s shopstr-terms.md
 test -s release-proof-card.svg
+test -s kit-terms.md
+test -s release-proof-kit-card.svg
 
 python3 - <<'PY'
 from html.parser import HTMLParser
@@ -103,7 +105,28 @@ for forbidden in ("@", "file://", "C:\\"):
 root = ET.parse("release-proof-card.svg").getroot()
 assert root.tag.endswith("svg")
 assert root.attrib.get("viewBox") == "0 0 1200 630"
-print("ok: public service terms and product card verified")
+
+kit_terms = Path("kit-terms.md").read_text(encoding="utf-8")
+normalized_kit_terms = " ".join(kit_terms.split())
+kit_required = (
+    "Personal: 15,000 sats",
+    "Team: 100,000 sats",
+    "dependency-free offline CLI",
+    "buyer-only private GitHub repository",
+    "Do not provide",
+    "real name",
+    "customer data",
+    "compatible Lightning invoice",
+)
+for phrase in kit_required:
+    assert phrase in normalized_kit_terms, phrase
+for forbidden in ("@", "file://", "C:\\"):
+    assert forbidden not in kit_terms, forbidden
+
+kit_root = ET.parse("release-proof-kit-card.svg").getroot()
+assert kit_root.tag.endswith("svg")
+assert kit_root.attrib.get("viewBox") == "0 0 1200 630"
+print("ok: public service/product terms and cards verified")
 PY
 
 printf '%s\n' "ok: static landing verification passed"
