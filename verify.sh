@@ -50,10 +50,12 @@ for stylesheet in parser.stylesheets:
     assert Path(stylesheet).is_file(), stylesheet
 
 required_copy = (
-    "$129 pilot",
-    "one active slot",
-    "No payment is being collected.",
-    "3-business-day delivery target",
+    "15,000-sat kit",
+    "100,000-sat service",
+    "One active client slot",
+    "An order request is not payment.",
+    "GitHub username and tier",
+    "3-business-day target",
     "Starts only after scope and safe access materials are complete and accepted.",
     "Production credentials or production access",
     "Paid infrastructure or purchases",
@@ -62,12 +64,12 @@ required_copy = (
 for phrase in required_copy:
     assert phrase in html, phrase
 
-issue_prefix = "https://github.com/softpeanut/release-proof-sprint/issues/new?"
-issue_links = [link for link in parser.links if link.startswith(issue_prefix)]
-assert len(issue_links) == 2, issue_links
-for link in issue_links:
-    assert "Scope%20interest" in link
-    assert "Do%20not%20include%20secrets" in link
+kit_listing = "https://shopstr.market/listing/naddr1qvzqqqrkcgpzqul3a9tjj4q5kh55hww8h9dnhn3cddnmnhyun5gg48x0w0qyvtd9qy28wumn8ghj7un9d3shjtnyv9kh2uewd9hszrthwden5te0dehhxtnvdakqqfmjv4kx2ctnv5khqun0danz66mfwskk7enxd35kuefdvdkxjtt5v4khqmrpw3jhxha73kd"
+kit_links = [link for link in parser.links if link == kit_listing]
+assert len(kit_links) == 4, kit_links
+service_listing = "https://shopstr.market/listing/naddr1qvzqqqrkcgpzqul3a9tjj4q5kh55hww8h9dnhn3cddnmnhyun5gg48x0w0qyvtd9qy28wumn8ghj7un9d3shjtnyv9kh2uewd9hszrthwden5te0dehhxtnvdakqqfnjv4kx2ctnv5khqun0danz6umswf5kuapdwp6kymrfvvkhyetsdaekjar0wfusmfteap"
+service_links = [link for link in parser.links if link == service_listing]
+assert len(service_links) == 1, service_links
 
 assert "https://softpeanut.github.io/shipproof/" in parser.links
 assert "https://github.com/softpeanut/shipproof" in parser.links
@@ -75,7 +77,10 @@ assert "https://github.com/softpeanut/shipproof" in parser.links
 for forbidden in ("google-analytics", "googletagmanager", "plausible.io", "segment.com"):
     assert forbidden not in html.lower(), forbidden
 
-print(f"ok: {len(parser.links)} links, {len(issue_links)} scope-interest CTAs, no script/form")
+print(
+    f"ok: {len(parser.links)} links, {len(kit_links)} exact kit listing links, "
+    f"{len(service_links)} exact service listing link, no script/form"
+)
 PY
 
 python3 - <<'PY'
